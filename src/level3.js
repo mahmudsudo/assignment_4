@@ -184,3 +184,25 @@ const users = [
         email,username,password,createdAt:Date.now().toLocaleString()
     })
   }
+
+  function signIn(username="",email="",password){
+    if (!username && email){
+      users.forEach(el => {
+       if ( el.email == email && el.password == password) {
+        return el;
+       }else{
+        return "user doesnt exist"
+       }
+      })
+    }else if (username && !email){
+        users.forEach(el => {
+          if (el.username == username && el.password ==password){
+            return el;
+          }else {
+            return "user doesnt exist";
+          }
+        })
+    }else {
+      return "sign in info incorrect";
+    }
+  }
